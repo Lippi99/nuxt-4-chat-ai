@@ -5,4 +5,7 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
+  css: ["~/assets/css/main.css"],
+
+  modules: ["@nuxt/ui", "@nuxt/eslint"],
 });
