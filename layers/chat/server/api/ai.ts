@@ -1,25 +1,21 @@
 import {
-  createOpenAIModel,
+  createOllamaModel,
   generateChatResponse,
-} from '../services/ai-service'
+} from "../services/ai-service";
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event)
-  const { messages } = body
+  const body = await readBody(event);
+  const { messages } = body;
 
-  const id = messages.length.toString()
+  const id = messages.length.toString();
 
-  const openaiApiKey = useRuntimeConfig().openaiApiKey
-  const openaiModel = createOpenAIModel(openaiApiKey)
+  const openaiModel = createOllamaModel();
 
-  const response = await generateChatResponse(
-    openaiModel,
-    messages
-  )
+  const response = await generateChatResponse(openaiModel, messages);
 
   return {
     id,
-    role: 'assistant',
+    role: "assistant",
     content: response,
-  }
-})
+  };
+});
